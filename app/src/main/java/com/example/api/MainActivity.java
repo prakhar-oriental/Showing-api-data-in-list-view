@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.listview);
-
+         int x = 5;
         String url = "https://jsonplaceholder.typicode.com/todos";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -41,7 +41,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                   json(response);
-            }
+               /* ArrayList<String> arrayListtwo = new ArrayList<>();
+                try {
+                    for(int i=0;i<response.length();i++) {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        s = jsonObject.getString("title");
+                        Log.d("nu", "hi" + s);
+                        arrayListtwo.add(s);
+                        arrayList = arrayListtwo;
+
+                    }*/
+
+                }
+               /* ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayList);
+                listView.setAdapter(arrayAdapter);*/
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -50,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
         requestQueue.add(jsonArrayRequest);
        Log.d("my","hi"+s);
+
 
     }
     public void json(JSONArray response)
